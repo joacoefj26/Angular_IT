@@ -1,0 +1,46 @@
+<div>
+    <h1>pensamientos!</h1>
+
+    <p>
+        <label for="idea">Dime una idea</label>
+        <input type="text" id="idea" [(ngModel)]="sIdea">
+    </p>
+    <p>
+        <button (click)="AddIdea()">Añadir</button>
+    </p>
+
+      <!--*ngIf con then y else es para Angular 4-->
+    <aside *ngIf="aIdeas.length; then ideasTemplate else vacioTemplate"></aside>
+
+    <ng-template #ideasTemplate class="lista">
+        <h3>Lista de Ideas</h3>
+        <ul>
+           <li *ngFor="let idea of aIdeas; let i = index">{{i+1}} - {{idea}}</li>
+        </ul>
+    </ng-template>
+
+    <ng-template #vacioTemplate>
+        <p>Escribe una idea</p>
+    </ng-template>
+
+    <!--div>
+        <ul *ngFor="let person of aUsuarios"
+        [ngSwitch]="person.country">
+          <li *ngSwitchCase="'UK'"
+            class="text-success">{{ person.name }} ({{ person.country }})
+          </li>
+          <li *ngSwitchCase="'USA'"
+            class="text-primary">{{ person.name }} ({{ person.country }})
+          </li>
+          <li *ngSwitchCase="'SP'"
+          class="text-danger">{{ person.name }} ({{ person.country }})
+          </li>
+          <li *ngSwitchDefault
+          class="text-warning">{{ person.name }} ({{ person.country }})
+          </li>
+        </ul>
+    </div-->
+      
+    
+    
+</div>

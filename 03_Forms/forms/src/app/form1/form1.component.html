@@ -1,0 +1,71 @@
+<form (ngSubmit)="enviar()" novalidate #myform= "ngForm">
+    <h2>Datos Impresora</h2>
+  <p>
+    <label for="firstName">Nombre</label>
+    <input type="text" id="firstName" name="firstName"
+    [(ngModel)]="oUsuario.firstName" minlength="3" required
+    #firstnameState="ngModel">
+  </p>
+  <div class="error-message"
+  [hidden]="firstnameState.valid || firstnameState.pristine">
+  El nombre es obligatorio</div>
+      
+  
+
+  <p>
+    <label for="lastName">Apellidos</label>
+    <input type="text" id="lastName" name="lastName"
+    [(ngModel)]="oUsuario.lastName" required>
+  </p>
+
+  <p>
+      <label for="phoneNumber">Telefono</label>
+      <input type="text" id="phoneNumber" name="phoneNumber"
+      [(ngModel)]="oUsuario.phoneNumber" required>
+    </p>
+
+    <h2>Seleccionar Impresora</h2>
+    <input type="radio" name="printer" id="" value="p1"
+    [(ngModel)]="selectPrinter">
+    <label for="">impresora 1</label>
+
+    <input type="radio" name="printer" id="" value="p2"
+    [(ngModel)]="selectPrinter">
+    <label for="">impresora 2</label>
+
+    <h2>Seleccionar Modelos</h2>
+    <div *ngFor="let impresora of aPrinters">
+      <input type="radio"
+      name="printer" [(ngModel)]="selectPrinter" [value]="impresora"
+      (change)="mostrarFinal=true">
+      <label>{{impresora}}</label>
+    </div>
+
+    <input type="checkbox" name="claro" id="claro" [(ngModel)]="isClaro"
+    [disabled]="!selectPrinter">
+    <label for="claro">Elegir tono</label>
+
+    <input type="checkbox" name="color" id="color" [(ngModel)]="isColor"
+    [disabled]="!selectPrinter"
+    (change)="avisarPrint()">
+    <label for="color">Elegir color</label>
+
+    <p>
+      <label for="select">Departamento</label>
+      <select name="select" id="select"
+        [(ngModel)]="deprtamentoSeleccionado"
+        (ngModelChange)="avisarDepartamento()">
+        <option *ngFor="let departamento of aDepartamentos"
+        [ngValue]="departamento">{{departamento.nombre}}</option>
+      </select>
+    </p>
+
+    <p>
+        <label for=""></label>
+        <input type="submit" id="enviar" name="enviar" value="Enviar"
+        [disabled] = "!myform.valid">
+        <label for=""></label>			
+        <input type="button" id="borrar" name="borrar" 
+        value="Borrar" (click)="borrar()">
+      </p>
+</form>

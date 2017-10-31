@@ -1,3 +1,4 @@
+import { GoogleService } from './google.service';
 import { LibrosService } from './libros.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,7 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   providers: [
-    LibrosService
+    LibrosService, GoogleService
   ],
 })
 export class ServiciesModule { }

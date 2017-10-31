@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
@@ -13,7 +14,8 @@ import { ServiciesModule} from './servicies/servicies.module';
     AppComponent
   ],
   imports: [
-    BrowserModule, SharedModule, ReactiveFormsModule, FormsModule, SamplesModule, ServiciesModule
+    BrowserModule, SharedModule, ReactiveFormsModule,
+    FormsModule, SamplesModule, ServiciesModule, HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
